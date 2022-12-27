@@ -1,24 +1,34 @@
-import logo from './logo.svg';
+
+
+import {  Image } from '@chakra-ui/react'
+import logo from "./assets/logo-spacex.png";
 import './App.css';
+import { FooterApp } from './components/FooterApp';
+import { Routes, Route} from 'react-router-dom';
+import LaunchList from './components/LaunchList';
+import LaunchDetails from './components/LaunchDetails';
+import RocketDetails from './components/RocketDetails';
+
+
+
 
 function App() {
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Image src={logo} width={300} m={4}  />
+      <Routes>
+        <Route path='/' element={<LaunchList />} />
+        <Route path='launch/:launchId' element={<LaunchDetails />} />
+        <Route path='rockets/:rocketId' element={<RocketDetails />} />
+      </Routes>
+
+   
+      
+      <FooterApp />
+
+    </>
   );
 }
 
